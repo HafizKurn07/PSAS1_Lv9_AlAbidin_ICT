@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juknis Ujian Praktik ICT Kelas 9</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .main-wrapper {
+            width: 100%;
+            min-height: 100%;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .container-custom {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .header-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .content-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .badge-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .list-styled {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .list-styled li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .list-styled li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .info-box {
+            background: #cfe2ff;
+            border-left: 4px solid #0d6efd;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .schedule-table {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .schedule-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .schedule-table td:first-child {
+            font-weight: 600;
+            color: #667eea;
+            width: 30%;
+        }
+        
+        .footer-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .number-badge {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 0.75rem;
+        }
+        
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .criteria-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="main-wrapper">
+   <div class="container-custom"><!-- Header -->
+    <div class="header-card text-center">
+     <h1 class="display-4 fw-bold mb-3" id="main-title">Welcome to</h1>
+     <h1 class="display-4 fw-bold mb-3" id="main-title"> Ujian Praktik ICT Level IX</h1>
+     <h2 class="h4 mb-2" id="school-name">SMP Islam International Al-Abidin</h2>
+    </div><!-- Jadwal dan Waktu -->
+    <div class="content-card">
+     <h3 class="section-title">🗓️ Jadwal dan Waktu Pengerjaan</h3>
+     <table class="schedule-table">
+      <tbody>
+       <tr>
+        <td>Tanggal Pelaksanaan</td>
+        <td id="exam-date">01 Desember 2025</td>
+       </tr>
+       <tr>
+        <td>Waktu Ujian</td>
+        <td id="exam-time">09.30 - 11.00 WIB</td>
+       </tr>
+       <tr>
+        <td>Durasi Pengerjaan</td>
+        <td>90 Menit </td>
+       </tr>
+       <tr>
+        <td>Batas Waktu Upload</td>
+        <td>15 Menit setelah Ujian (Maksimal)</td>
+       </tr>
+       <tr>
+        <td>Tempat Ujian</td>
+        <td>Ruang Ujian </td>
+       </tr>
+      </tbody>
+     </table>
+    </div><!-- Tata Tertib -->
+    <div class="content-card">
+     <h3 class="section-title">📜 Tata Tertib Ujian</h3>
+     <ol class="ps-4" style="list-style-type: upper-alpha;">
+      <li class="mb-2">Siswa hadir 10 menit sebelum ujian dimulai</li>
+      <li class="mb-2">Siswa wajib mengenakan seragam sekolah lengkap</li>
+      <li class="mb-2">Siswa wajib membawa kartu peserta ujian</li>
+      <li class="mb-2">Tidak diperkenankan membuat kegaduhan di ruang ujian</li>
+      <li class="mb-2"><strong>DILARANG KERAS</strong> membuka tab lain yang tidak diizinkan atau menggunakan tools AI untuk membuat kode.</li>
+      <li class="mb-2">Siswa hanya diizinkan menggunakan internet untuk dokumentasi HTML dan Bootstrap. Selain itu, dilarang membuka situs lain seperti media sosial, YouTube, atau situs generatif AI lainnya.</li>
+      
+      <li class="mb-2">Siswa yang melanggar tata tertib akan diberi sanksi</li>
+      <li class="mb-2">Keputusan pengawas bersifat mutlak dan tidak dapat diganggu gugat</li>
+     </ol>
+    </div><!-- Aturan Penting -->
+    <div class="content-card">
+     <h3 class="section-title">⚠️ Aturan Penting</h3>
+     <div class="criteria-grid">
+      <div class="criteria-item"><strong>🚫 Dilarang Keras</strong>
+       <ul class="mt-2 ps-3">
+        <li>Menggunakan bantuan AI generatif (ChatGPT, Copilot, dll.)</li>
+        <li>Menggunakan joki (pengerjaan oleh pihak lain.)</li>
+        
+       </ul>
+      </div>
+      <div class="criteria-item"><strong>✅ Diperbolehkan</strong>
+       <ul class="mt-2 ps-3">
+        <li>Membuka dokumentasi Bootstrap, Petani Kode, W3Schools, Modul </li>
+        <li>Bertanya pada pengawas apabila terdapat kendala teknis</li>
+       </ul>
+      </div>
+     </div>
+    </div><!-- Deskripsi Ujian -->
+    <div class="content-card">
+     <h3 class="section-title">📋 Deskripsi Ujian</h3>
+     <div class="info-box">
+      <p class="mb-2"><strong>Materi Ujian: Bootstrap 5 - Styling dan Layout</strong></p>
+      <p class="mb-0">Siswa diminta mengedit file HTML yang sudah disediakan dengan cara menambahkan class-class Bootstrap 5 untuk memperindah tampilan, menata layout, dan menyesuaikan UI sesuai dengan kreativitas masing-masing.</p>
+     </div>
+     <ul class="list-styled mt-3">
+      <li>Struktur HTML tidak boleh dihapus</li>
+      <li>Siswa boleh menambahkan atribut class Bootstrap</li>
+      <li>Siswa boleh menambahkan div wrapper tambahan bila diperlukan</li>
+      <li>Gunakan Bootstrap utility classes untuk styling</li>
+      <li>Fokus pada responsive design dan estetika</li>
+     </ul>
+    </div><!-- Mekanisme Ujian -->
+    <div class="content-card">
+     <h3 class="section-title">⚙️ Mekanisme Ujian Praktik</h3>
+     <div class="mb-3">
+      <p><span class="number-badge">1</span><strong>Persiapan:</strong> Siswa masuk ke ruang ujian sesuai jadwal dan tempat duduk sesuai nomor urut peserta</p>
+     </div>
+     <div class="mb-3">
+      <p><span class="number-badge">2</span><strong>Pembagian Soal:</strong> File HTML template akan dibagikan melalui Link dibawah</p>
+     </div>
+     <div class="mb-3">
+      <p><span class="number-badge">3</span><strong>Pengerjaan:</strong> Siswa mengedit file HTML dengan menambahkan class Bootstrap 5 sesuai kreativitas</p>
+     </div>
+     <div class="mb-3">
+      <p><span class="number-badge">4</span><strong>Testing:</strong> Siswa wajib membuka hasil pekerjaan di browser untuk memastikan tampilan sesuai</p>
+     </div>
+     <div class="mb-3">
+      <p><span class="number-badge">5</span><strong>Pengumpulan:</strong> File HTML yang sudah selesai dikumpulkan sesuai ketentuan</p>
+     </div>
+     <div class="alert alert-info mt-4" role="alert">
+      <h5 class="alert-heading mb-3">📥 Download Template Soal</h5>
+      <p class="mb-3">Klik tombol di bawah ini untuk mengunduh file template HTML yang akan dikerjakan:</p><a href="https://docs.google.com/document/d/1TLYmGCq6dvRrrff-x_tGtkmeUhDRyPIOsx4my0S68TA/edit?usp=sharing" id="download-template-btn" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-download me-2" viewbox="0 0 16 16" style="vertical-align: middle;"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" /> <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
+       </svg> Download Template HTML </a>
+     </div>
+    </div><!-- Ketentuan File -->
+    <div class="content-card">
+     <h3 class="section-title">📁 Ketentuan File yang Diunggah</h3>
+     <div class="warning-box mb-3"><strong>⚠️ Perhatian:</strong> File yang tidak sesuai ketentuan akan dikurangi nilainya!
+     </div>
+     <ul class="list-styled">
+      <li><strong>Format File:</strong> HTML (.html)</li>
+      <li><strong>Nama File:</strong> PSAS1__NamaLengkap_Kelas.html</li>
+      <li>Contoh: PSAS1_BudiSantoso_9A.html</li>
+      <li>File harus dapat dibuka dengan browser (Chrome, Firefox, Edge)</li>
+      <li>Pastikan link Bootstrap CDN sudah tertanam dengan benar</li>
+      <li>File harus responsive dan tampil baik di berbagai ukuran layar</li>
+     </ul>
+     <div class="alert alert-success mt-4" role="alert">
+      <h5 class="alert-heading mb-3">📤 Upload Jawaban Ujian</h5>
+      <p class="mb-3">Setelah selesai mengerjakan, klik tombol di bawah untuk mengumpulkan jawaban Anda:</p><a href="https://forms.gle/1ybV5SV7rT5MhxcT7" id="upload-form-btn" class="btn btn-success btn-lg w-100" target="_blank" rel="noopener noreferrer">
+       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cloud-upload me-2" viewbox="0 0 16 16" style="vertical-align: middle;"><path fill-rule="evenodd" d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383" /> <path fill-rule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708z" />
+       </svg> Kirim Jawaban (Google Form) </a> <small class="text-muted d-block mt-2">Pastikan Anda sudah mengisi form dengan lengkap dan benar</small>
+     </div>
+    </div><!-- Penilaian -->
+    <div class="content-card">
+     <h3 class="section-title">📊 Kriteria Penilaian Ujian</h3>
+     <div class="criteria-grid">
+      <div class="criteria-item"><strong>Layout &amp; Grid (25 poin)</strong>
+       <ul class="mt-2 ps-3">
+        <li>Penggunaan container</li>
+        <li>Row dan column system</li>
+        <li>Responsive breakpoints</li>
+       </ul>
+      </div>
+      <div class="criteria-item"><strong>Komponen UI (25 poin)</strong>
+       <ul class="mt-2 ps-3">
+        <li>Buttons, cards, badges</li>
+        <li>Navigation bar</li>
+        <li>Forms dan inputs</li>
+       </ul>
+      </div>
+      <div class="criteria-item"><strong>Typography &amp; Colors (20 poin)</strong>
+       <ul class="mt-2 ps-3">
+        <li>Text utilities</li>
+        <li>Color classes</li>
+        <li>Spacing utilities</li>
+       </ul>
+      </div>
+      <div class="criteria-item"><strong>Kreativitas (15 poin)</strong>
+       <ul class="mt-2 ps-3">
+        <li>Desain estetis</li>
+        <li>Pemilihan warna harmonis</li>
+        <li>Inovasi layout</li>
+       </ul>
+      </div>
+      <div class="criteria-item"><strong>Responsiveness (10 poin)</strong>
+       <ul class="mt-2 ps-3">
+        <li>Mobile view</li>
+        <li>Tablet view</li>
+        <li>Desktop view</li>
+       </ul>
+      </div>
+      <div class="criteria-item"><strong>Kerapian Kode (5 poin)</strong>
+       <ul class="mt-2 ps-3">
+        <li>Indentasi benar</li>
+        <li>Naming convention</li>
+        <li>Struktur terorganisir</li>
+       </ul>
+      </div>
+     </div>
+     <div class="info-box mt-3"><strong>Total Nilai: 100 poin</strong><br>
+        Penilaian dilakukan berdasarkan kriteria di atas. Pastikan semua aspek terpenuhi untuk mendapatkan nilai maksimal.
+     </div>
+    </div><!-- Footer -->
+    <div class="footer-section">
+     <p class="mb-2" id="footer-text">Semoga sukses dalam mengerjakan ujian praktik! Kerjakan dengan jujur dan percaya diri.</p>
+     <p class="text-muted mb-0">© 2025 Tim ICT - Semua Hak Dilindungi</p>
+    </div>
+   </div>
+  </div>
+  <script>
+        const defaultConfig = {
+            title: "Petunjuk Teknis Ujian Praktik ICT",
+            school_name: "SMP Negeri 1 Contoh",
+            exam_date: "15 - 20 Desember 2024",
+            exam_time: "08.00 - 10.00 WIB",
+            footer_text: "Semoga sukses dalam mengerjakan ujian praktik! Kerjakan dengan jujur dan percaya diri.",
+            template_url: "",
+            upload_form_url: "",
+            primary_color: "#667eea",
+            secondary_color: "#764ba2",
+            background_color: "#667eea",
+            text_color: "#333333",
+            surface_color: "#ffffff"
+        };
+
+
+
+        async function onConfigChange(config) {
+            const title = config.title || defaultConfig.title;
+            const schoolName = config.school_name || defaultConfig.school_name;
+            const examDate = config.exam_date || defaultConfig.exam_date;
+            const examTime = config.exam_time || defaultConfig.exam_time;
+            const footerText = config.footer_text || defaultConfig.footer_text;
+            const templateUrl = config.template_url || defaultConfig.template_url;
+            const uploadFormUrl = config.upload_form_url || defaultConfig.upload_form_url;
+            const primaryColor = config.primary_color || defaultConfig.primary_color;
+            const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const surfaceColor = config.surface_color || defaultConfig.surface_color;
+
+            document.getElementById('main-title').textContent = title;
+            document.getElementById('school-name').textContent = schoolName;
+            document.getElementById('exam-date').textContent = examDate;
+            document.getElementById('exam-time').textContent = examTime;
+            document.getElementById('footer-text').textContent = footerText;
+            
+            const downloadBtn = document.getElementById('download-template-btn');
+            if (templateUrl) {
+                downloadBtn.href = templateUrl;
+                downloadBtn.classList.remove('disabled');
+                downloadBtn.style.opacity = '1';
+            } else {
+                downloadBtn.href = '#';
+                downloadBtn.style.opacity = '0.6';
+            }
+
+            const uploadBtn = document.getElementById('upload-form-btn');
+            if (uploadFormUrl) {
+                uploadBtn.href = uploadFormUrl;
+                uploadBtn.classList.remove('disabled');
+                uploadBtn.style.opacity = '1';
+            } else {
+                uploadBtn.href = '#';
+                uploadBtn.style.opacity = '0.6';
+            }
+
+            document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${secondaryColor} 100%)`;
+            document.querySelector('.main-wrapper').style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${secondaryColor} 100%)`;
+            document.querySelector('.header-card').style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+            
+            const contentCards = document.querySelectorAll('.content-card, .footer-section');
+            contentCards.forEach(card => {
+                card.style.background = surfaceColor;
+            });
+
+            const sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles.forEach(title => {
+                title.style.color = primaryColor;
+                title.style.borderBottomColor = primaryColor;
+            });
+
+            const badges = document.querySelectorAll('.badge-custom, .number-badge');
+            badges.forEach(badge => {
+                badge.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+            });
+
+            const listItems = document.querySelectorAll('.list-styled li:before');
+            listItems.forEach(item => {
+                item.style.color = primaryColor;
+            });
+
+            const scheduleLabels = document.querySelectorAll('.schedule-table td:first-child');
+            scheduleLabels.forEach(label => {
+                label.style.color = primaryColor;
+            });
+
+            const criteriaItems = document.querySelectorAll('.criteria-item');
+            criteriaItems.forEach(item => {
+                item.style.borderLeftColor = primaryColor;
+            });
+
+            const allText = document.querySelectorAll('p, li, td, ol li, ul li');
+            allText.forEach(text => {
+                text.style.color = textColor;
+            });
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.surface_color || defaultConfig.surface_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.config.surface_color = value;
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.primary_color || defaultConfig.primary_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.config.primary_color = value;
+                                window.elementSdk.setConfig({ primary_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.secondary_color || defaultConfig.secondary_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.config.secondary_color = value;
+                                window.elementSdk.setConfig({ secondary_color: value });
+                            }
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["title", config.title || defaultConfig.title],
+                ["school_name", config.school_name || defaultConfig.school_name],
+                ["exam_date", config.exam_date || defaultConfig.exam_date],
+                ["exam_time", config.exam_time || defaultConfig.exam_time],
+                ["template_url", config.template_url || defaultConfig.template_url],
+                ["upload_form_url", config.upload_form_url || defaultConfig.upload_form_url],
+                ["footer_text", config.footer_text || defaultConfig.footer_text]
+            ]);
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a44a30bc60e70ac',t:'MTc2NDExMDMxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
